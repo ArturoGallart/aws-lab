@@ -13,10 +13,12 @@ phases:
   pre_build:
     commands:
       - echo Initializing Terraform...
+      - cd terraform
       - terraform init
   build:
     commands:
       - echo Running Terraform Plan...
+      - cd terraform 
       - terraform plan -out=tfplan
   # post_build:
   #   commands:
