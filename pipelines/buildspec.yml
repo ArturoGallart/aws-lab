@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      terraform: 0.14
+    commands:
+      - echo "Installing dependencies"
+  build:
+    commands:
+      - echo "Starting Terraform Init"
+      - terraform init
+      - echo "Starting Terraform Plan"
+      - terraform plan -out=tfplan
+artifacts:
+  files:
+    - tfplan
