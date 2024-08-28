@@ -8,7 +8,7 @@ terraform {
   backend "s3" {
     bucket = "tfstatelab "
     key    = "statefile/terraform.tfstate"  # Change the path as needed
-    region = "us-east-2"  # Change to your preferred region
+    region = "us-east-2" 
   }
 }
 
