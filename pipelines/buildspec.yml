@@ -12,6 +12,7 @@ phases:
       - mv /tmp/terraform/terraform /usr/local/bin/
       - echo Installing Python dependencies...
       - pip install requests python-dotenv
+      - yum install -y jq
   pre_build:
     commands:
       - echo "Initializing Terraform..."
@@ -37,7 +38,7 @@ phases:
       - terraform apply -auto-approve tfplan
       - cd ..
       - echo "Fetching OpenAI API key from Secrets Manager"
-      - export OPENAI_API_KEY=$(aws secretsmanager get-secret-value --secret-id OPENAI_API_KEY --query 'SecretString' --output text --region us-east-1)
+      - export OPENAI_API_KEY=$(aws secretsmanager get-secret-value --secret-id OPENAI_API_KEY --query 'SecretString' --output text --region us-east-1 | jq -r '.OPENAI_API_KEY')
       - echo "Generating Documentation..."
       - python scripts/generate_docs.py
 artifacts:
