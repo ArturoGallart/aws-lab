@@ -6,7 +6,7 @@ provider "aws" {
 # Backend configuration
 terraform {
   backend "s3" {
-    bucket = "tfstatelab "
+    bucket = "tfstatelab"
     key    = "statefile/terraform.tfstate"  # Change the path as needed
     region = "us-east-2" 
   }
