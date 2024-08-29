@@ -22,18 +22,12 @@ phases:
   build:
     commands:
       - echo "Running Terraform Plan..."
-      - echo "Current directory before cd terraform in build"
-      - pwd
-      - cd terraform
-      - echo "Current directory after cd terraform in build"
+      - echo "Current directory:"
       - pwd
       - terraform plan -out=tfplan
-  post_build:
-    commands:
-      - echo "Applying Terraform Plan..."
-      - echo "Current directory before cd terraform in post_build"
-      - pwd
-      - cd terraform
-      - echo "Current directory after cd terraform in post_build"
-      - pwd
-      - terraform apply -auto-approve tfplan
+  # post_build:
+  #   commands:
+  #     - echo "Applying Terraform Plan..."
+  #     - echo "Current directory:"
+  #     - pwd
+  #     - terraform apply -auto-approve tfplan
