@@ -31,3 +31,11 @@ phases:
       - echo "Current directory:"
       - pwd
       - terraform apply -auto-approve tfplan
+      - cd ..
+      - echo "Fetching OpenAI API key from Secrets Manager"
+      - export OPENAI_API_KEY=$(aws secretsmanager get-secret-value --secret-id OPENAI_API_KEY --query 'SecretString' --output text)
+      - echo "Generating Documentation..."
+      - python scripts/generate_docs.py
+artifacts:
+  files:
+    - deployment_documentation.md
