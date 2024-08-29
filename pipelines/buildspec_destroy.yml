@@ -24,10 +24,7 @@ phases:
       - echo "Running Terraform Plan..."
       - echo "Current directory:"
       - pwd
-      - terraform plan -out=tfplan
+      - terraform destroy -auto-approve
   post_build:
     commands:
-      - echo "Applying Terraform Plan..."
-      - echo "Current directory:"
-      - pwd
-      - terraform apply -auto-approve tfplan
+      - echo "Terraform Destroy Completed."
