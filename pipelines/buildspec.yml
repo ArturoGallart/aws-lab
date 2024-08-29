@@ -12,7 +12,7 @@ phases:
       - mv /tmp/terraform/terraform /usr/local/bin/
       - echo Installing Python dependencies...
       - pip install requests python-dotenv
-      - yum install -y jq
+      - apt-get update && apt-get install -y jq
   pre_build:
     commands:
       - echo "Initializing Terraform..."
