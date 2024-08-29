@@ -25,6 +25,8 @@ phases:
       - echo "Current directory:"
       - pwd
       - terraform plan -out=tfplan
+      - echo Saving plan log...
+      - terraform show -json tfplan > ../deployment_log.txt
   post_build:
     commands:
       - echo "Applying Terraform Plan..."
