@@ -11,7 +11,7 @@ phases:
       - unzip -o terraform_1.0.11_linux_amd64.zip -d /tmp/terraform
       - mv /tmp/terraform/terraform /usr/local/bin/
       - echo Installing Python dependencies...
-      - pip install requests
+      - pip install requests python-dotenv
   pre_build:
     commands:
       - echo "Initializing Terraform..."
